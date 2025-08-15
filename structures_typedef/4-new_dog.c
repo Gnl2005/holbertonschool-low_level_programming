@@ -3,17 +3,18 @@
 #include "dog.h"
 
 /**
- * new_dog - creates a new dog struct
+ * new_dog - creates a new dog
  * @name: name of the dog
  * @age: age of the dog
  * @owner: owner of the dog
  *
- * Return: pointer to the new dog (dog_t), or NULL on failure
+ * Return: pointer to new dog (dog_t), or NULL if function fails
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
 	char *new_name, *new_owner;
+	int name_len, owner_len;
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
@@ -22,14 +23,17 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (dog == NULL)
 		return (NULL);
 
-	new_name = malloc(strlen(name) + 1);
+	name_len = strlen(name);
+	owner_len = strlen(owner);
+
+	new_name = malloc(name_len + 1);
 	if (new_name == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
 
-	new_owner = malloc(strlen(owner) + 1);
+	new_owner = malloc(owner_len + 1);
 	if (new_owner == NULL)
 	{
 		free(new_name);
