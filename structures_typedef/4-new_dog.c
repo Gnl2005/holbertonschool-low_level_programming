@@ -1,53 +1,72 @@
 #include <stdlib.h>
-#include <string.h>
 #include "dog.h"
+
+/**
+ * _strlen - calculates the length of a string
+ * @s: the string
+ * Return: length
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i])
+		i++;
+	return (i);
+}
+
+/**
+ * _strcpy - copies a string to a new buffer
+ * @dest: destination
+ * @src: source
+ * Return: pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
 /**
  * new_dog - creates a new dog
  * @name: name of the dog
  * @age: age of the dog
  * @owner: owner of the dog
- *
  * Return: pointer to new dog (dog_t), or NULL if function fails
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *dog;
-	char *new_name, *new_owner;
-	int name_len, owner_len;
+	dog_t *d;
 
-	if (name == NULL || owner == NULL)
+	if (!name || !owner)
 		return (NULL);
 
-	dog = malloc(sizeof(dog_t));
-	if (dog == NULL)
+	d = malloc(sizeof(dog_t));
+	if (!d)
 		return (NULL);
 
-	name_len = strlen(name);
-	owner_len = strlen(owner);
+	d->name = malloc(_strlen(name) + 1);
+	d->owner = malloc(_strlen(owner) + 1);
 
-	new_name = malloc(name_len + 1);
-	if (new_name == NULL)
+	if (!d->name || !d->owner)
 	{
-		free(dog);
+		free(d->name);
+		free(d->owner);
+		free(d);
 		return (NULL);
 	}
 
-	new_owner = malloc(owner_len + 1);
-	if (new_owner == NULL)
-	{
-		free(new_name);
-		free(dog);
-		return (NULL);
-	}
+	_strcpy(d->name, name);
+	_strcpy(d->owner, owner);
+	d->age = age;
 
-	strcpy(new_name, name);
-	strcpy(new_owner, owner);
-
-	dog->name = new_name;
-	dog->age = age;
-	dog->owner = new_owner;
-
-	return (dog);
+	return (d);
 }
 
