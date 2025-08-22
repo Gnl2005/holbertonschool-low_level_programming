@@ -3,11 +3,7 @@
 
 /**
  * print_all - prints anything based on format string
- * @format: list of types of arguments passed to the function
- *
- * Description: prints each argument according to its type, separated by ", "
- *              if string is NULL, prints (nil)
- *              unsupported format specifiers are ignored
+ * @format: list of argument types
  */
 void print_all(const char * const format, ...)
 {
@@ -22,7 +18,6 @@ void print_all(const char * const format, ...)
 		{
 			if (printed)
 				printf(", ");
-
 			switch (format[i])
 			{
 			case 'c':
@@ -48,7 +43,6 @@ void print_all(const char * const format, ...)
 			}
 			i++;
 		}
-
 	va_end(args);
 	printf("\n");
 }
