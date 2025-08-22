@@ -12,12 +12,12 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i, printed = 0;
+	unsigned int i = 0, printed = 0;
 	char *str;
 
 	va_start(args, format);
 
-	for (i = 0; format && format[i]; i++)
+	while (format && format[i])
 	{
 		if (printed)
 			printf(", ");
@@ -37,9 +37,12 @@ void print_all(const char * const format, ...)
 				printf("%s", str);
 		}
 		else
+		{
+			i++;
 			continue;
-
+		}
 		printed = 1;
+		i++;
 	}
 
 	va_end(args);
