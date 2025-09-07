@@ -8,6 +8,7 @@
  *
  * Return: -1
  */
+int _sqrt_helper(int n, int i)
 {
 	if (i * i == n)
 		return (i);
