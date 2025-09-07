@@ -3,8 +3,9 @@
 #include <stdlib.h>
 
 /**
- * _sqrt_recursion - esas funksiya
+ * _sqrt_helper - funksiya kvadrat kökü tapn
  * @n: variable
+ * @i: indiki yoxlanacaq eded
  *
  * Return: -1
  */
@@ -18,9 +19,9 @@ int _sqrt_helper(int n, int i)
 }
 /**
  * _sqrt_recursion - esas funksiya
- * @n: n
+ * @n: value
  *
- * Return: return
+ * Return: -1
  */
 
 int _sqrt_recursion(int n)
