@@ -8,6 +8,20 @@
  *
  * Return: -1
  */
+{
+	if (i * i == n)
+		return (i);
+	else if (i * i > n)
+		return (-1);
+	return (_sqrt_helper(n, i + 1));
+}
+/**
+ * _sqrt_recursion - esas funksiya
+ * @n: n
+ *
+ * Return: return
+ */
+
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
