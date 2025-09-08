@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - Enter point
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
 		printf("Eror\n");
 		return (1);
 	}
-	a = atoi(argv[1]);
+	a = atoi(argiv[1]);
 	b = atoi(argv[2]);
 	n = a * b;
 
