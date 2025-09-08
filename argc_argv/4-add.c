@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - Enter point
@@ -10,17 +11,27 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b, n;
+	int sum = 0;
+	int i, j;
 
-	if (argc != 3)
+	if (argc == 1)
 	{
-		printf("Error\n");
-		return (1);
+		printf("0\n");
+		return (0);
 	}
-	a = atoi(argv[1]);
-	b = atoi(argv[2]);
-	n = a + b;
 
-	printf("%d\n", n);
+	for (i = 1; i < argc; i++)
+	{
+		for (j = 0; argv[i][j] != '\0'; j++)
+		{
+			if (!isdigit((unsigned char)argv[i][j]))
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		sum += atoi(argv[i]);
+	}
+	printf("%d\n", sum);
 	return (0);
 }
